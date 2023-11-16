@@ -10,7 +10,10 @@ import EmptyProducts from './components/EmptyProducts/EmptyProducts';
 import NavBar from '../../layout/navbar/NavBar';
 import ProductModal from './components/ProductModal/ProductModal';
 
-
+interface PageWrapperProps {
+    centerContent: boolean;
+  }
+  
 const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
@@ -38,7 +41,7 @@ const Home = () => {
     queryFn: () => fetchProducts(),
   });
 
-  console.log(productsData);
+  const hasProducts = productsData && productsData.items.length > 0;
 
   const filteredProducts = productsData?.items.filter((product: ProductType) => {
     const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
@@ -51,7 +54,7 @@ const Home = () => {
   return (
     <>
       <NavBar setSearchTerm={setSearchTerm} setIsActiveFilter={setIsActiveFilter} setIsPromoFilter={setIsPromoFilter} />
-      <PageWrapper>
+      <PageWrapper centerContent={!hasProducts}>
         {productsData ? (
           <StyledColumn>
             <StyledCont>
@@ -81,14 +84,14 @@ const Home = () => {
 };
 export default Home;
 
-const PageWrapper = styled.div`
+const PageWrapper = styled.div<PageWrapperProps>`
   width: 100%;
   background-color: ${colors.whiteDark};
   min-height: 1000px;
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: start;
+  align-items: ${(props) => props.centerContent ? 'center' : 'start'};
 `;
 
 const StyledCont = styled.div`
