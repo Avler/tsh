@@ -59,7 +59,7 @@ const LogIn = () => {
                       <FormField name="password" label="Password" placeholder="Enter password" />
                     </InputCont>
 
-                    <CustomButton primary="true" height="48px" type="submit">
+                    <CustomButton $primary={true} height="48px" type="submit">
                       Log in
                     </CustomButton>
                     <StyledText>Forgot password ?</StyledText>
