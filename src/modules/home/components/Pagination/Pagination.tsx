@@ -34,22 +34,22 @@ const Pagination: React.FC<PaginationProps> = ({ total, current, onPageChange })
 
   return (
     <Nav>
-    {current > 1 && <PageNumber onClick={() => onPageChange(1)}>First</PageNumber>}
-    {pageNumbers.map((number, index) =>
-      number === ellipsis ? (
-        <Ellipsis key={index}>{number}</Ellipsis>
-      ) : (
-        <PageNumber
-          key={index}
-          isActive={number === current}
-          onClick={() => typeof number === 'number' && onPageChange(number)}
-        >
-          {number}
-        </PageNumber>
-      ),
-    )}
-    {current < total && <PageNumber onClick={() => onPageChange(total)}>Last</PageNumber>}
-  </Nav>
+      {current > 1 && <PageNumber onClick={() => onPageChange(1)}>First</PageNumber>}
+      {pageNumbers.map((number, index) =>
+        number === ellipsis ? (
+          <Ellipsis key={index}>{number}</Ellipsis>
+        ) : (
+          <PageNumber
+            key={index}
+            isActive={number === current}
+            onClick={() => typeof number === 'number' && onPageChange(number)}
+          >
+            {number}
+          </PageNumber>
+        ),
+      )}
+      {current < total && <PageNumber onClick={() => onPageChange(total)}>Last</PageNumber>}
+    </Nav>
   );
 };
 

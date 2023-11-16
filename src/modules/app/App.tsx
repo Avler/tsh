@@ -28,7 +28,6 @@ const App = () => {
         <Route path={ROUTES.home()} element={<Root />}>
           <Route index element={<Home />} />
           <Route path="*" element={<Navigate to="/" />} />
-          {/* Use CommonCategoryPage component for all category routes */}
         </Route>
         <Route path={ROUTES.login()} element={<LogIn />} />
       </>,

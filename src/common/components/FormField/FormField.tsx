@@ -10,7 +10,6 @@ interface FormFieldProps {
   placeholder?: string; // Optional placeholder property
 }
 
-// Updated FormField component
 const FormField: React.FC<FormFieldProps> = ({ name, label, type = 'text', placeholder }) => {
   return (
     <Field name={name}>
@@ -45,10 +44,9 @@ const StyledLabel = styled.label`
   font-size: 14px;
   font-style: normal;
   font-weight: 600;
-  line-height: 16px; /* 114.286% */
+  line-height: 16px;
 `;
 
-// Styled input component
 const StyledInput = styled.input`
   width: 100%;
   height: 48px;

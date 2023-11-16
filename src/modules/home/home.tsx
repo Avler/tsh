@@ -1,4 +1,4 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import { colors } from '../../layout/theme/colors';
 import { fetchProducts, PRODUCTS_LIST_QUERY_DOMAIN } from './apiCalls';
@@ -11,9 +11,9 @@ import NavBar from '../../layout/navbar/NavBar';
 import ProductModal from './components/ProductModal/ProductModal';
 
 interface PageWrapperProps {
-    centerContent: boolean;
-  }
-  
+  centerContent: boolean;
+}
+
 const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
@@ -91,7 +91,7 @@ const PageWrapper = styled.div<PageWrapperProps>`
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: ${(props) => props.centerContent ? 'center' : 'start'};
+  align-items: ${props => (props.centerContent ? 'center' : 'start')};
 `;
 
 const StyledCont = styled.div`
@@ -103,7 +103,7 @@ const StyledCont = styled.div`
   max-width: 1440px; // Adjust max-width as needed for your design
   margin: 0 auto; // Centers the grid in the page
   place-items: center;
-
+  margin-top: 40px;
   // Default to 1 column for mobile devices
   grid-template-columns: 1fr;
 

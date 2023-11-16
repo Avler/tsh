@@ -14,19 +14,16 @@ interface NavBarProps {
 }
 
 const NavBar: React.FC<NavBarProps> = ({ setSearchTerm, setIsActiveFilter, setIsPromoFilter }) => {
-
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };
 
-  // Active checkbox change handler
   const handleActiveChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setIsActiveFilter(event.target.checked);
   };
 
-  // Promo checkbox change handler
   const handlePromoChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setIsPromoFilter(event.target.checked);
   };
@@ -49,7 +46,9 @@ const NavBar: React.FC<NavBarProps> = ({ setSearchTerm, setIsActiveFilter, setIs
           </Form>
         </Nav>
         <ButtonCont>
-          <CustomButton height="36px" onClick={() =>navigate(ROUTES.login())}>Log in</CustomButton>
+          <CustomButton height="36px" onClick={() => navigate(ROUTES.login())}>
+            Log in
+          </CustomButton>
         </ButtonCont>
       </StyledCont>
       <StyledCont className="d-flex flex-column d-xl-none gap-2 mt-5">
