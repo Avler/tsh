@@ -5,7 +5,8 @@ import styled from 'styled-components';
 import { colors } from '../../layout/theme/colors';
 import Logo from '../logo/Logo';
 import searchIcon from '../assets/magnifier.svg';
-
+import { ROUTES } from '../../modules/app/routes';
+import { useNavigate } from 'react-router-dom';
 interface NavBarProps {
   setSearchTerm: (term: string) => void;
   setIsActiveFilter: (isActive: boolean) => void;
@@ -13,6 +14,9 @@ interface NavBarProps {
 }
 
 const NavBar: React.FC<NavBarProps> = ({ setSearchTerm, setIsActiveFilter, setIsPromoFilter }) => {
+
+    const navigate = useNavigate();
+
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };
@@ -45,7 +49,7 @@ const NavBar: React.FC<NavBarProps> = ({ setSearchTerm, setIsActiveFilter, setIs
           </Form>
         </Nav>
         <ButtonCont>
-          <CustomButton height="36px">Log in</CustomButton>
+          <CustomButton height="36px" onClick={() =>navigate(ROUTES.login())}>Log in</CustomButton>
         </ButtonCont>
       </StyledCont>
       <StyledCont className="d-flex flex-column d-xl-none gap-2 mt-5">

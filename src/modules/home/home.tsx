@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import styled from 'styled-components';
 import { colors } from '../../layout/theme/colors';
 import { fetchProducts, PRODUCTS_LIST_QUERY_DOMAIN } from './apiCalls';
@@ -10,9 +10,6 @@ import EmptyProducts from './components/EmptyProducts/EmptyProducts';
 import NavBar from '../../layout/navbar/NavBar';
 import ProductModal from './components/ProductModal/ProductModal';
 
-interface ProductsData {
-  items: ProductType[];
-}
 
 const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);

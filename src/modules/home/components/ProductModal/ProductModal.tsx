@@ -3,11 +3,6 @@ import { Modal } from 'react-bootstrap';
 import styled from 'styled-components';
 import { ProductType } from '../../types/productType';
 import { colors } from '../../../../layout/theme/colors';
-interface Product {
-  title: string;
-  image: string;
-  description: string;
-}
 
 interface ProductModalProps {
   product: ProductType | null;
