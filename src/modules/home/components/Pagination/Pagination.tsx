@@ -8,7 +8,7 @@ interface PaginationProps {
 }
 
 interface PageNumberProps {
-  isActive?: boolean;
+  $isActive?: boolean;
 }
 
 const Pagination: React.FC<PaginationProps> = ({ total, current, onPageChange }) => {
@@ -41,7 +41,7 @@ const Pagination: React.FC<PaginationProps> = ({ total, current, onPageChange })
         ) : (
           <PageNumber
             key={index}
-            isActive={number === current}
+            $isActive={number === current}
             onClick={() => typeof number === 'number' && onPageChange(number)}
           >
             {number}
@@ -63,8 +63,8 @@ const Nav = styled.nav`
 `;
 
 const PageNumber = styled.button<PageNumberProps>`
-  background: ${props => (props.isActive ? '#007bff' : 'white')};
-  color: ${props => (props.isActive ? 'white' : 'black')};
+  background: ${props => (props.$isActive ? '#007bff' : 'white')};
+  color: ${props => (props.$isActive ? 'white' : 'black')};
   border: 1px solid #ddd;
   padding: 5px 10px;
   margin: 0 5px;

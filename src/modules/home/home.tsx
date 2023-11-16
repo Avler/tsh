@@ -11,7 +11,7 @@ import NavBar from '../../layout/navbar/NavBar';
 import ProductModal from './components/ProductModal/ProductModal';
 
 interface PageWrapperProps {
-  centerContent: boolean;
+  $centerContent: boolean;
 }
 
 const Home = () => {
@@ -36,7 +36,7 @@ const Home = () => {
     setIsModalOpen(true);
   };
 
-  const { data: productsData } = useQuery({
+  const { data: productsData, isError } = useQuery({
     queryKey: [PRODUCTS_LIST_QUERY_DOMAIN],
     queryFn: () => fetchProducts(),
   });
@@ -54,8 +54,10 @@ const Home = () => {
   return (
     <>
       <NavBar setSearchTerm={setSearchTerm} setIsActiveFilter={setIsActiveFilter} setIsPromoFilter={setIsPromoFilter} />
-      <PageWrapper centerContent={!hasProducts}>
-        {productsData ? (
+      <PageWrapper $centerContent={!hasProducts}>
+        {isError ? (
+          <ErrorMessage>There was an error fetching the products. Please try again later.</ErrorMessage>
+        ) : productsData ? (
           <StyledColumn>
             <StyledCont>
               {currentItems &&
@@ -67,7 +69,7 @@ const Home = () => {
                     text={product.description}
                     rating={product.rating}
                     promo={product.promo}
-                    active={product.active}
+                    $active={product.active}
                     onShowDetails={() => handleShowDetails(product)}
                   />
                 ))}
@@ -91,35 +93,28 @@ const PageWrapper = styled.div<PageWrapperProps>`
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: ${props => (props.centerContent ? 'center' : 'start')};
+  align-items: ${props => (props.$centerContent ? 'center' : 'start')};
 `;
 
 const StyledCont = styled.div`
   width: 100%;
   margin-top: 38px;
   display: grid;
-  grid-gap: 20px; // Adjust the gap as needed
-  padding: 40px; // Adjust the padding as needed
-  max-width: 1440px; // Adjust max-width as needed for your design
-  margin: 0 auto; // Centers the grid in the page
+  grid-gap: 20px;
+  padding: 40px;
+  max-width: 1440px;
+  margin: 0 auto;
   place-items: center;
   margin-top: 40px;
-  // Default to 1 column for mobile devices
   grid-template-columns: 1fr;
-
-  // Medium devices (tablets, 768px and up)
   @media (min-width: 768px) {
-    grid-template-columns: repeat(2, 1fr); // 2 columns on medium devices
+    grid-template-columns: repeat(2, 1fr);
   }
-
-  // Large devices (desktops, 1024px and up)
   @media (min-width: 1024px) {
-    grid-template-columns: repeat(3, 1fr); // 3 columns on large devices
+    grid-template-columns: repeat(3, 1fr);
   }
-
-  // Extra large devices (large desktops, 1200px and up)
   @media (min-width: 1200px) {
-    grid-template-columns: repeat(4, 1fr); // 4 columns on extra large devices
+    grid-template-columns: repeat(4, 1fr);
   }
 `;
 
@@ -128,4 +123,10 @@ const StyledColumn = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+`;
+
+const ErrorMessage = styled.div`
+  color: ${colors.red};
+  text-align: center;
+  font-size: 18px;
 `;

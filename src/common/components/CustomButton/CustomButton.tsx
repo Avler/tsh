@@ -3,7 +3,7 @@ import { colors } from '../../../layout/theme/colors';
 
 interface ButtonProps {
   height?: string;
-  primary?: string;
+  $primary?: boolean;
   disabled?: boolean;
   children: string;
   type?: string;
@@ -11,9 +11,9 @@ interface ButtonProps {
 }
 
 // CustomButton component
-const CustomButton: React.FC<ButtonProps> = ({ children, height, primary, disabled, type, onClick }) => {
+const CustomButton: React.FC<ButtonProps> = ({ children, height, $primary, disabled, type, onClick }) => {
   return (
-    <StyledButton height={height} primary={primary} disabled={disabled} type={type} onClick={onClick}>
+    <StyledButton height={height} $primary={$primary} disabled={disabled} type={type} onClick={onClick}>
       {disabled ? 'Unavailable' : children}
     </StyledButton>
   );
@@ -26,19 +26,19 @@ const StyledButton = styled.button<ButtonProps>`
   font-size: 16px;
   border-radius: 4px;
   width: 100%;
-  color: ${({ primary }) => (primary === 'true' ? `${colors.white}` : `${colors.blue}`)};
-  background: ${({ primary }) => (primary === 'true' ? `${colors.blue}` : `${colors.white}`)};
-  border: ${({ primary }) => (primary === 'true' ? 'none' : `1px solid ${colors.blue}`)};
+  color: ${({ $primary }) => ($primary ? `${colors.white}` : `${colors.blue}`)};
+  background: ${({ $primary }) => ($primary ? `${colors.blue}` : `${colors.white}`)};
+  border: ${({ $primary }) => ($primary ? 'none' : `1px solid ${colors.blue}`)};
   height: ${({ height }) => height || 'auto'};
   &:hover {
-    color: ${({ primary }) => (primary === 'true' ? `${colors.white}` : `${colors.darkBlue}`)};
-    background: ${({ primary }) => (primary === 'true' ? `${colors.darkBlue}` : `${colors.white}`)};
-    border: ${({ primary }) => (primary === 'true' ? 'none' : `1px solid ${colors.darkBlue}`)};
+    color: ${({ $primary }) => ($primary ? `${colors.white}` : `${colors.darkBlue}`)};
+    background: ${({ $primary }) => ($primary ? `${colors.darkBlue}` : `${colors.white}`)};
+    border: ${({ $primary }) => ($primary ? 'none' : `1px solid ${colors.darkBlue}`)};
   }
   &:disabled {
-    color: ${({ primary }) => (primary === 'true' ? `${colors.white}` : `${colors.darkGray}`)};
-    background: ${({ primary }) => (primary === 'true' ? `${colors.darkGray}` : '#FFF')};
-    border: ${({ primary }) => (primary === 'true' ? 'none' : `1px solid ${colors.darkGray}`)};
+    color: ${({ $primary }) => ($primary ? `${colors.white}` : `${colors.darkGray}`)};
+    background: ${({ $primary }) => ($primary ? `${colors.darkGray}` : '#FFF')};
+    border: ${({ $primary }) => ($primary ? 'none' : `1px solid ${colors.darkGray}`)};
     cursor: not-allowed;
   }
 `;

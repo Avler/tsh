@@ -18,7 +18,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, isOpen, onClose })
       <StyledModalHeader closeButton></StyledModalHeader>
       <StyledModalBody>
         <StyledImage src={product.image} alt={product.name} />
-        <StyledModalTitle>{product.name}</StyledModalTitle> {/* Use 'name' instead of 'title' */}
+        <StyledModalTitle>{product.name}</StyledModalTitle>
         <StyledModalDes>{product.description}</StyledModalDes>
       </StyledModalBody>
     </StyledModal>

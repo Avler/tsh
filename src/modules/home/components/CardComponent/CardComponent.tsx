@@ -11,13 +11,13 @@ interface CardComponentProps {
   text: string;
   rating: number;
   promo?: boolean;
-  active: boolean;
+  $active: boolean;
   onShowDetails: () => void;
 }
 
-const CardComponent: React.FC<CardComponentProps> = ({ image, title, text, rating, promo, active, onShowDetails }) => (
+const CardComponent: React.FC<CardComponentProps> = ({ image, title, text, rating, promo, $active, onShowDetails }) => (
   <Card className="card">
-    <CardImage src={image} alt={title} active={active} />
+    <CardImage src={image} alt={title} $active={$active} />
     <CardBody>
       {promo && <PromoBadge>Promo</PromoBadge>}
       <CardTitle>{title}</CardTitle>
@@ -30,7 +30,7 @@ const CardComponent: React.FC<CardComponentProps> = ({ image, title, text, ratin
         ))}
       </StarRating>
       <ButtonCont>
-        <CustomButton primary="true" height="38px" disabled={active} onClick={onShowDetails}>
+        <CustomButton $primary={true} height="38px" disabled={$active} onClick={onShowDetails}>
           Show detalis
         </CustomButton>
       </ButtonCont>
@@ -46,18 +46,18 @@ const Card = styled.div`
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   display: flex;
-  flex-direction: column; // Stack the children vertically
-  justify-content: space-between; // Distributes space around items
-  overflow: hidden; // Keeps the image within the border-radius
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
   background: white;
   gap: 0;
 `;
 
-const CardImage = styled.img<{ active: boolean }>`
+const CardImage = styled.img<{ $active: boolean }>`
   height: 170px;
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
-  filter: ${props => (props.active ? 'grayscale(100%)' : 'none')};
+  filter: ${props => (props.$active ? 'grayscale(100%)' : 'none')};
 `;
 
 const CardBody = styled.div`
@@ -79,7 +79,7 @@ const CardText = styled.p`
 `;
 
 const StarRating = styled.div`
-  color: #ffc107; // color for the stars
+  color: #ffc107;
 `;
 
 const StarImg = styled.img`

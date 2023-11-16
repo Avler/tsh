@@ -36,7 +36,7 @@ const ContTitle = styled.h2`
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
-  line-height: 16px; /* 88.889% */
+  line-height: 16px;
 `;
 const ContDes = styled.p`
   color: ${colors.gray};
@@ -46,5 +46,5 @@ const ContDes = styled.p`
   font-size: 14px;
   font-style: normal;
   font-weight: 600;
-  line-height: 16px; /* 114.286% */
+  line-height: 16px;
 `;
