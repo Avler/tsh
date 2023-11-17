@@ -24,6 +24,7 @@ const StyledCont = styled.div`
   background-color: ${colors.white};
   border-radius: 8px;
   gap: 22px;
+  margin-bottom: 100px;
   @media (max-width: 650px) {
     width: 327px;
   }

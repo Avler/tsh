@@ -51,31 +51,38 @@ const Home = () => {
     return matchesSearch && matchesActive && matchesPromo;
   });
   const currentItems = filteredProducts && filteredProducts.slice(indexOfFirstItem, indexOfLastItem);
+  const showEmptyProducts = !currentItems || currentItems.length === 0;
+
   return (
     <>
       <NavBar setSearchTerm={setSearchTerm} setIsActiveFilter={setIsActiveFilter} setIsPromoFilter={setIsPromoFilter} />
-      <PageWrapper $centerContent={!hasProducts}>
+      <PageWrapper $centerContent={!hasProducts || showEmptyProducts}>
         {isError ? (
           <ErrorMessage>There was an error fetching the products. Please try again later.</ErrorMessage>
         ) : productsData ? (
-          <StyledColumn>
-            <StyledCont>
-              {currentItems &&
-                currentItems.map((product: ProductType) => (
-                  <CardComponent
-                    key={product.name}
-                    image={product.image}
-                    title={product.name}
-                    text={product.description}
-                    rating={product.rating}
-                    promo={product.promo}
-                    $active={product.active}
-                    onShowDetails={() => handleShowDetails(product)}
-                  />
-                ))}
-            </StyledCont>
+          <>
+            {showEmptyProducts ? (
+              <EmptyProducts />
+            ) : (
+              <StyledColumn>
+                <StyledCont>
+                  {currentItems.map((product: ProductType) => (
+                    <CardComponent
+                      key={product.name}
+                      image={product.image}
+                      title={product.name}
+                      text={product.description}
+                      rating={product.rating}
+                      promo={product.promo}
+                      $active={product.active}
+                      onShowDetails={() => handleShowDetails(product)}
+                    />
+                  ))}
+                </StyledCont>
+              </StyledColumn>
+            )}
             <Pagination total={totalPages} current={currentPage} onPageChange={handlePageChange} />
-          </StyledColumn>
+          </>
         ) : (
           <EmptyProducts />
         )}
@@ -94,6 +101,10 @@ const PageWrapper = styled.div<PageWrapperProps>`
   display: flex;
   justify-content: center;
   align-items: ${props => (props.$centerContent ? 'center' : 'start')};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 const StyledCont = styled.div`
