@@ -14,7 +14,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, isOpen, onClose })
   if (!isOpen || !product) return null;
 
   return (
-    <StyledModal show={isOpen} onHide={onClose} closeButton>
+    <StyledModal show={isOpen} onHide={onClose}>
       <StyledModalHeader closeButton></StyledModalHeader>
       <StyledModalBody>
         <StyledImage src={product.image} alt={product.name} />
@@ -59,7 +59,6 @@ const StyledModalTitle = styled(Modal.Title)`
   margin-top: 15px;
   height: 50px;
   color: ${colors.black};
-
   font-size: 24px;
   font-style: normal;
   font-weight: 600;
@@ -71,10 +70,10 @@ const StyledModalTitle = styled(Modal.Title)`
 
 const StyledModalDes = styled.p`
   margin-left: 15px;
+  margin-right: 15px;
   margin-top: 10px;
   height: 80px;
   color: ${colors.darkGray};
-
   font-size: 18px;
   font-style: normal;
   font-weight: 600;

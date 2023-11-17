@@ -60,6 +60,7 @@ const Nav = styled.nav`
   justify-content: center;
   align-items: center;
   padding: 10px;
+  margin-bottom: 100px;
 `;
 
 const PageNumber = styled.button<PageNumberProps>`
