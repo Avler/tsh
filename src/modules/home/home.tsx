@@ -45,7 +45,7 @@ const Home = () => {
 
   const filteredProducts = productsData?.items.filter((product: ProductType) => {
     const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesActive = !isActiveFilter || product.active === isActiveFilter;
+    const matchesActive = !isActiveFilter || (isActiveFilter && product.active === false);
     const matchesPromo = !isPromoFilter || product.promo === isPromoFilter;
 
     return matchesSearch && matchesActive && matchesPromo;
