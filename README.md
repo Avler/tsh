@@ -1,27 +1,16 @@
-# React + TypeScript + Vite
+Chciałbym krótko opisać to co zrobiłem pracowałem nad tym jeden dzień dokładnie wczoraj :) wszystkie podstawowe punkty zostały zawarte :
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Strona główna widok na którym jest nawigacja , Działające filtrowanie produktów po nazwie oraz , promo / active  , przycisk logowania który przenosi nas na stronę z logowaniem 
+- Poniżej lista produktów 8 na stronę wygenerowanych z api + do tego paginacja działa poprawnie (nie jestem pewien czy dokładnie tak miało być ale UE jest ok )
+- Podział na produkty aktywne i promo 
+-Show details ukazuje nam modal z produktem 
 
-Currently, two official plugins are available:
+- Empty Products page , tutaj wyszło to bardzo fajnie , gdy filtrujemy produkty i ich nie ma pojawia się , gdy jesteśmy na stronie na których nie ma produktów również , oraz gdy np z request z api byłby pusty to również :) 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Oraz Strona Logowania , która można zobaczyć po naciśnięciu Login Na stronie głównej  (obsługa logowania nie zrobiona tylko widok )
 
-## Expanding the ESLint configuration
+Do realizacji projektu użyłem 
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+-React / Typescript / Bootstrap / Styledcomponents 
+-React Final Form do logowania oraz yup do podstawowej walidacji że pola są wymagane
+-Do pobierania danych z api / React query 
