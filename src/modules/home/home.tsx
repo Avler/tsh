@@ -99,12 +99,9 @@ const PageWrapper = styled.div<PageWrapperProps>`
   min-height: 1000px;
   position: relative;
   display: flex;
-  justify-content: center;
-  align-items: ${props => (props.$centerContent ? 'center' : 'start')};
-  display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: ${props => (props.$centerContent ? 'center' : 'start')};
 `;
 
 const StyledCont = styled.div`
