@@ -16,18 +16,17 @@ const Pagination: React.FC<PaginationProps> = ({ total, current, onPageChange })
   const ellipsis = '...';
 
   if (total <= 6) {
+    // If total pages are 6 or less, display all page numbers
     pageNumbers = Array.from({ length: total }, (_, i) => i + 1);
   } else {
     if (current <= 2) {
+      // If current page is 1 or 2, display the first three and the last two
       pageNumbers = [1, 2, 3, ellipsis, total - 1, total];
-    } else if (current === 3) {
-      pageNumbers = [1, 2, 3, 4, ellipsis, total - 1, total];
-    } else if (current >= total - 5) {
-      pageNumbers = [1, ellipsis];
-      for (let i = total - 5; i <= total; i++) {
-        pageNumbers.push(i);
-      }
+    } else if (current >= total - 1) {
+      // If current page is the last or second last, display the first two and the last three
+      pageNumbers = [1, 2, ellipsis, total - 2, total - 1, total];
     } else {
+      // Otherwise, display the first, the current - 1, the current, the current + 1, and the last
       pageNumbers = [1, ellipsis, current - 1, current, current + 1, ellipsis, total];
     }
   }
@@ -68,7 +67,7 @@ const PageNumber = styled.button<PageNumberProps>`
   color: ${props => (props.$isActive ? 'white' : 'black')};
   border: 1px solid #ddd;
   padding: 5px 10px;
-  margin: 0 5px;
+  margin: 0 2px;
   cursor: pointer;
   &:hover {
     background-color: #0056b3;

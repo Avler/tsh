@@ -56,7 +56,9 @@ const NavBar: React.FC<NavBarProps> = ({ setSearchTerm, setIsActiveFilter, setIs
           {' '}
           <Logo />
           <ButtonCont>
-            <CustomButton height="36px">Log in</CustomButton>
+            <CustomButton height="36px" onClick={() => navigate(ROUTES.login())}>
+              Log in
+            </CustomButton>
           </ButtonCont>
         </StyledContMobile>
 

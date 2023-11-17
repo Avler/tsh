@@ -102,6 +102,9 @@ const PageWrapper = styled.div<PageWrapperProps>`
   flex-direction: column;
   align-items: center;
   justify-content: ${props => (props.$centerContent ? 'center' : 'start')};
+  @media (max-width: 1200px) {
+    margin-top: 50px;
+  }
 `;
 
 const StyledCont = styled.div`
